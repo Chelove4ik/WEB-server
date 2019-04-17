@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Добавить комментарий</h1>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+
+    <div class="alert alert-dark" role="alert">
+        <h4>{{ news['title'] }}</h4>
+        <div>{{ news['content'] }}</div>
+        <hr>
+        <h6>{{ news['user'] }}</h6>
+    </div>
+
+    <p>
+        {{ form.content.label }}<br>
+        {{ form.content }}<br>
+        {% for error in form.content.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Комментарии</h2>
+<a href="/add_com/{{news_id}}">Добавить коментарий</a>
+
+<div class="alert alert-dark" role="alert">
+    <h4>{{ news['title'] }}</h4>
+    <div>{{ news['content'] }}</div>
+    <hr>
+    <h6>{{ news['user'] }}</h6>
+</div>
+
+{% for item in com %}
+<div class="alert alert-success" role="alert">
+    <h3>{{user.get(item[2])[1]}}</h3>
+    <div>{{item[3]}}</div>
+    {% if user_id == item[2] %}
+    <a href="/delete_com/{{item[0]}}">Удалить коментарий</a>
+    {% endif %}
+</div>
+{% endfor %}
+
+{% endblock %}

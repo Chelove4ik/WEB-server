@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Последние новости</h2>
+<a href="/add_news">Добавить новость</a>
+{% for item in news %}
+<div class="alert alert-dark" role="alert">
+    <h2>{{item[1]}}</h2>
+    <div>{{item[2]}}</div>
+    <hr>
+    <h6>{{user.get(item[4])[1]}}</h6>
+    <hr>
+    <a href="/view_com/{{item[0]}}">Посмотреть комментарии</a>
+    {% if user_id == item[4] %}
+    <a href="/delete_news/{{item[0]}}">Удалить новость</a>
+    {% endif %}
+</div>
+{% endfor %}
+
+{% endblock %}
